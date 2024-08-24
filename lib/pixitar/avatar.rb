@@ -3,33 +3,20 @@ module Pixitar
     class InvalidGenderError < StandardError; end
     class MissingImageFilesError < StandardError; end
 
-    attr_reader :image
-    attr_reader :assets_path
-    attr_reader :image_extention
-    attr_reader :gender
+    attr_reader :image, :assets_path, :image_extension, :gender
 
     def initialize(image_class = Pixitar::Image.new, opts = {})
       @image = image_class
       @assets_path = opts.fetch(:assets_path, "data/images")
-      @image_extention = opts.fetch(:image_extention, "png")
+      @image_extension = opts.fetch(:image_extension, "png")
     end
 
     def face_parts
-      [
-        :background,
-        :clothes,
-        :face,
-        :hair,
-        :mouth,
-        :eye
-      ]
+      [:background, :clothes, :face, :hair, :mouth, :eye]
     end
 
     def genders
-      [
-        :male,
-        :female
-      ]
+      [:male, :female]
     end
 
     def random_gender
@@ -54,7 +41,7 @@ module Pixitar
     private
 
     def create_avatar_image(filename)
-      face_parts.map do |face_part|
+      face_parts.each do |face_part|
         asset = random_asset_for(face_part)
         image.compose(asset)
       end
@@ -62,18 +49,14 @@ module Pixitar
     end
 
     def random_asset_for(face_part)
-      parts = assets.grep(/#{face_part}/)
+      parts = assets_for(face_part)
       raise MissingImageFilesError, "Missing #{face_part} image files for #{gender} avatars" if parts.empty?
 
       parts.sample
     end
 
-    def assets
-      @assets ||= Dir.glob(path)
-    end
-
-    def path
-      File.join(assets_path, gender.to_s, "*.#{image_extention}")
+    def assets_for(face_part)
+      Dir.glob(File.join(assets_path, gender.to_s, "#{face_part}*.#{image_extension}"))
     end
   end
 end
