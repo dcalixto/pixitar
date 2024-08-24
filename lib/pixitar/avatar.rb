@@ -5,11 +5,11 @@ module Pixitar
 
     attr_reader :image, :assets_path, :image_extension, :gender
 
-    def initialize(image_class = Pixitar::Image.new, opts = {})
-      @image = image_class
-      @assets_path = opts.fetch(:assets_path, "/images/pixitar/")
-      @image_extension = opts.fetch(:image_extension, "png")
-    end
+ def initialize(image_class = Pixitar::Image.new, opts = {})
+  @image = image_class
+  @assets_path = opts.fetch(:assets_path, Rails.root.join("app", "assets", "images", "pixitar"))
+  @image_extension = opts.fetch(:image_extension, "png")
+end
 
     def face_parts
       [:background, :clothes, :face, :hair, :mouth, :eye]
