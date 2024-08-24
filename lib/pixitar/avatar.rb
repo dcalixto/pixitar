@@ -7,7 +7,7 @@ module Pixitar
 
     def initialize(image_class = Pixitar::Image.new, opts = {})
       @image = image_class
-      @assets_path = opts.fetch(:assets_path, "data/images")
+      @assets_path = opts.fetch(:assets_path, "/images/pixitar/")
       @image_extension = opts.fetch(:image_extension, "png")
     end
 
