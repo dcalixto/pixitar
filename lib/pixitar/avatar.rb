@@ -56,15 +56,29 @@ module Pixitar
     private
 
     
+#def create_avatar_image(filename)
+ # face_parts.each do |face_part|
+ #   asset = random_asset_for(face_part)
+ #   image.compose(asset)
+ # end
+#  image.save(filename)
+  
+  # Return the file path as a string
+#  File.join(assets_path, filename)
+#end
+
+    
 def create_avatar_image(filename)
   face_parts.each do |face_part|
     asset = random_asset_for(face_part)
     image.compose(asset)
   end
-  image.save(filename)
+  # Save the image to the public directory
+  public_path = File.join(Rails.root, "public", "images", "pixitar", filename)
+  image.save(public_path)
   
-  # Return the file path as a string
-  File.join(assets_path, filename)
+  # Return the public URL path
+  "/images/pixitar/#{filename}"
 end
 
 
