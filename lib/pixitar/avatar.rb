@@ -46,12 +46,24 @@ module Pixitar
       generate_avatar(:female)
     end
 
-    def generate_avatar(gender = random_gender, filename = "avatar.png")
-      @gender = gender
-      raise InvalidGenderError unless genders.include?(gender)
+   # def generate_avatar(gender = random_gender, filename = "avatar.png")
+     # @gender = gender
+     # raise InvalidGenderError unless genders.include?(gender)
 
-      create_avatar_image(filename)
-    end
+     # create_avatar_image(filename)
+    #end
+
+    def generate_avatar(gender = random_gender, filename = nil)
+  @gender = gender
+  raise InvalidGenderError unless genders.include?(gender)
+
+  # Generate a random filename with a short identifier and random number
+  identifier = ("a".."z").to_a.sample(4).join # Generates a 4-character random string
+  random_number = rand(1000..9999) # Generates a 4-digit random number
+  filename ||= "avatar_#{identifier}_#{random_number}.png"
+
+  create_avatar_image(filename)
+end
 
     private
 
