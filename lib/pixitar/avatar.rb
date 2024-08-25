@@ -55,13 +55,19 @@ module Pixitar
 
     private
 
-    def create_avatar_image(filename)
-      face_parts.map do |face_part|
-        asset = random_asset_for(face_part)
-        image.compose(asset)
-      end
-      image.save(filename)
-    end
+    
+def create_avatar_image(filename)
+  face_parts.each do |face_part|
+    asset = random_asset_for(face_part)
+    image.compose(asset)
+  end
+  image.save(filename)
+  
+  # Return the file path as a string
+  File.join(assets_path, filename)
+end
+
+
 
     def random_asset_for(face_part)
       parts = assets_for(face_part)
