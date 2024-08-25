@@ -75,7 +75,7 @@ end
 end
 
 def assets_for(face_part)
-  pattern = File.join(assets_path, gender.to_s, "#{face_part}*.#{image_extension}")
+  pattern = File.join(assets_path, gender.to_s, "#{face_part}*.#{image_extention}")
   Dir.glob(pattern)
 end
 
