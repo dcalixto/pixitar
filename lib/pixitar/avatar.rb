@@ -5,14 +5,14 @@ module Pixitar
 
     attr_reader :image
     attr_reader :assets_path
-    attr_reader :image_extention
+    attr_reader :image_extension
     attr_reader :gender
 
-   def initialize(image_class = Pixitar::Image.new, opts = {})
-  @image = image_class
-  @assets_path = opts.fetch(:assets_path, Rails.root.join("app", "assets", "images", "pixitar"))
-  @image_extension = opts.fetch(:image_extension, "png")
-end
+    def initialize(image_class = Pixitar::Image.new, opts = {})
+      @image = image_class
+      @assets_path = opts.fetch(:assets_path, Rails.root.join("app", "assets", "images", "pixitar"))
+      @image_extension = opts.fetch(:image_extension, "png")
+    end
 
     def face_parts
       [
@@ -61,26 +61,20 @@ end
       image.save(filename)
     end
 
-
     def random_asset_for(face_part)
-  parts = assets_for(face_part)
-  raise MissingImageFilesError, "Missing #{face_part} image files for #{gender} avatars" if parts.empty?
+      parts = assets_for(face_part)
+      raise MissingImageFilesError, "Missing #{face_part} image files for #{gender} avatars" if parts.empty?
 
-  parts.sample
-end
-
-def assets_for(face_part)
-  pattern = File.join(assets_path, gender.to_s, "#{face_part}[0-9]*.#{image_extention}")
-  Dir.glob(pattern)
-end
-
-    #def assets
-      #@assets ||= Dir.glob(path)
-    #end
-
-    def path
-      File.join(assets_path, gender.to_s, "*.#{image_extention}")
+      parts.sample
     end
 
+    def assets_for(face_part)
+      pattern = File.join(assets_path, gender.to_s, "#{face_part}[0-9]*.#{image_extension}")
+      Dir.glob(pattern)
+    end
+
+    def path
+      File.join(assets_path, gender.to_s, "*.#{image_extension}")
+    end
   end
 end
