@@ -83,11 +83,9 @@ end
       #@assets ||= Dir.glob(path)
     #end
 
-    #def path
-      #File.join(assets_path, gender.to_s, "*.#{image_extention}")
-    #end
     def path
-  File.join(assets_path, gender.to_s, "*.#{image_extension}")
-end
+      File.join(assets_path, gender.to_s, "*.#{image_extention}")
+    end
+
   end
 end
