@@ -71,7 +71,7 @@ module Pixitar
     end
 
     def assets_for(face_part)
-      pattern = File.join(assets_path, gender.to_s, "#{face_part}*.#{image_extension}")
+      pattern = File.join(assets_path, gender.to_s, "#{face_part}.#{image_extension}")
       puts "Searching for files with pattern: #{pattern}"  # Debugging line
       Dir.glob(pattern)
     end
