@@ -61,12 +61,7 @@ end
       image.save(filename)
     end
 
-    #def random_asset_for(face_part)
-      #parts = assets.grep(/#{face_part}/)
-      #raise MissingImageFilesError, "Missing #{face_part} image files for #{gender} avatars" if parts.empty?
 
-      #parts.sample
-    #end
     def random_asset_for(face_part)
   parts = assets_for(face_part)
   raise MissingImageFilesError, "Missing #{face_part} image files for #{gender} avatars" if parts.empty?
@@ -75,7 +70,7 @@ end
 end
 
 def assets_for(face_part)
-  pattern = File.join(assets_path, gender.to_s, "#{face_part}*.#{image_extention}")
+  pattern = File.join(assets_path, gender.to_s, "#{face_part}[0-9]*.#{image_extention}")
   Dir.glob(pattern)
 end
 
