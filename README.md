@@ -1,7 +1,6 @@
 # Pixitar
 
-[Pixitar Avatar Example](/src/avatars.png)
-
+![Pixitar Avatar Example](./src/avatars.png)
 Pixitar is an avatar generation library written in Crystal. Generate random, male or female avatars.
 
 Inspired by [8biticon](https://github.com/matveyco/8biticon) _(author of the original image assets)_
@@ -40,7 +39,9 @@ avatar.generate_avatar # Saves to auto-generated filename
 
 Generate male avatar with custom filename
 
+```crystal
 avatar.generate_avatar(:male, "avatar.png") # Saves as avatar.png
+```
 
 Generate male avatar
 
@@ -67,9 +68,8 @@ Pixitar::Web.run
 Access avatars via HTTP:
 
 ```crystal
-- `GET /avatar/male` - Generate male avatar
-- `GET /avatar/female` - Generate female avatar
-
+`GET /avatar/male` - Generate male avatar
+`GET /avatar/female` - Generate female avatar
 
 ```
 
