@@ -16,45 +16,45 @@ dependencies:
     github: dcalixto/pixitar
 ```
 
+```crystal
 shards install
+```
 
 ## Usage
-
-### Basic Usage
 
 ```crystal
 require "pixitar"
 ```
 
-# Create a new avatar generator
+Create a new avatar generator
 
 ```crystal
 avatar = Pixitar::Avatar.new
 ```
 
-# Generate random avatar (male or female)
+Generate random avatar (male or female)
 
 ```crystal
 avatar.generate_avatar # Saves to auto-generated filename
 ```
 
-# Generate male avatar with custom filename
+Generate male avatar with custom filename
 
 avatar.generate_avatar(:male, "avatar.png") # Saves as avatar.png
 
-# Generate male avatar
+Generate male avatar
 
 ```crystal
 avatar.male_avatar # Saves to auto-generated filename
 ```
 
-# Generate female avatar
+Generate female avatar
 
 ```crystal
 avatar.female_avatar # Saves to auto-generated filename
 ```
 
-### Web Server Usage
+Web Server Usage
 
 ```crystal
 require "pixitar"
@@ -75,21 +75,21 @@ Access avatars via HTTP:
 
 ## Development
 
-# Install dependencies
+Install dependencies
 
 ```crystal
 shards install
 
 ```
 
-# Run specs
+Run specs
 
 ```crystal
 crystal spec
 
 ```
 
-## Contributing
+Contributing
 
 ```crystal
 1. Fork it (https://github.com/dcalixto/pixitar/fork)
@@ -104,12 +104,10 @@ crystal spec
 ## Contributors
 
 ```crystal
-- Daniel Calixto - creator and maintainer
+ Daniel Calixto - creator and maintainer
 
 ```
 
 ## License
 
 This shard is available as open source under the terms of the MIT License.
-
-!
