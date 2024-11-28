@@ -9,7 +9,11 @@ module Pixitar
     end
 
     def compose(image_path)
+      puts "Debug - Loading image from: #{image_path}"
       canvas = StumpyPNG.read(image_path)
+      puts "Debug - Canvas dimensions: #{canvas.width}x#{canvas.height}"
+      puts "Debug - Base canvas dimensions: #{@canvas.width}x#{@canvas.height}"
+
       width.times do |x|
         height.times do |y|
           @canvas[x, y] = canvas[x, y]

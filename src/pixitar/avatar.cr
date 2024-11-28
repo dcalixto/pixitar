@@ -46,12 +46,15 @@ module Pixitar
     private def create_avatar_image(filename)
       face_parts.each do |face_part|
         asset = random_asset_for(face_part)
+        puts "Debug - Composing #{face_part} from: #{asset}"
         image.compose(asset)
       end
 
       public_path = File.join("public", "images", "pixitar", filename)
+      puts "Debug - Saving final image to: #{public_path}"
       Dir.mkdir_p(File.dirname(public_path))
       image.save(public_path)
+      puts "Debug - Image saved successfully"
 
       "/images/pixitar/#{filename}"
     end

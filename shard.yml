@@ -8,11 +8,8 @@ description: |
   Pixitar generates random pixel avatars in Crystal
 
 dependencies:
-  kemal:
-    github: kemalcr/kemal
   stumpy_png:
     github: stumpycr/stumpy_png
-
 development_dependencies:
   spectator:
     github: icy-arctic-fox/spectator
