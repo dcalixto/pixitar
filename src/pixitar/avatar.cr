@@ -43,7 +43,7 @@ module Pixitar
       create_avatar_image(filename)
     end
 
-    private def create_avatar_image(filename)
+    def create_avatar_image(filename)
       face_parts.each do |face_part|
         asset = random_asset_for(face_part)
         puts "Debug - Composing #{face_part} from: #{asset}"
@@ -59,19 +59,18 @@ module Pixitar
       "/images/pixitar/#{filename}"
     end
 
-    private def random_asset_for(face_part)
+    def random_asset_for(face_part)
       parts = assets_for(face_part)
       raise MissingImageFilesError.new("Missing #{face_part} image files for #{gender} avatars") if parts.empty?
       parts.sample
     end
 
-    private def assets_for(face_part)
-      abs_path = File.expand_path(@assets_path)
+    def assets_for(face_part)
+      abs_path = File.expand_path(@assets_path) # Ensure absolute path
       pattern = File.join(abs_path, gender.to_s, "#{face_part}[0-9]*.#{image_extension}")
-      puts "Debug - Current working directory: #{Dir.current}"
-      puts "Debug - Looking for files at: #{pattern}"
+      puts "Debug - Looking for files at: #{pattern}" # Debug
       files = Dir.glob(pattern)
-      puts "Debug - Found files: #{files.inspect}"
+      puts "Debug - Found files: #{files.inspect}" # Debug
       files
     end
   end

@@ -9,13 +9,17 @@ module Pixitar
     end
 
     def compose(image_path)
-      puts "Debug - Loading image from: #{image_path}"
-      canvas = StumpyPNG.read(image_path)
-      puts "Debug - Canvas dimensions: #{canvas.width}x#{canvas.height}"
-      puts "Debug - Base canvas dimensions: #{@canvas.width}x#{@canvas.height}"
+      raise "File not found: #{image_path}" unless File.exists?(image_path)
 
-      width.times do |x|
-        height.times do |y|
+      canvas = StumpyPNG.read(image_path)
+      puts "Source image dimensions: #{canvas.width}x#{canvas.height}"
+      puts "Target canvas dimensions: #{@canvas.width}x#{@canvas.height}"
+
+      min_width = [canvas.width, @canvas.width].min
+      min_height = [canvas.height, @canvas.height].min
+
+      min_width.times do |x|
+        min_height.times do |y|
           @canvas[x, y] = canvas[x, y]
         end
       end
