@@ -64,6 +64,7 @@ module Pixitar
 
     private def assets_for(face_part)
       pattern = File.join(assets_path, gender.to_s, "#{face_part}[0-9]*.#{image_extension}")
+      puts "Debug - Looking for files at: #{pattern}"
       Dir.glob(pattern)
     end
   end
