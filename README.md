@@ -34,7 +34,7 @@ avatar = Pixitar::Avatar.new
 Generate random avatar (male or female)
 
 ```crystal
-avatar.generate_avatar # Saves to auto-generated filename
+avatar = Pixitar::Avatar.new.generate_avatar
 ```
 
 Generate male avatar with custom filename

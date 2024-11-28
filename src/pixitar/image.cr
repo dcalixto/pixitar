@@ -8,11 +8,12 @@ module Pixitar
       @canvas = StumpyPNG::Canvas.new(500, 500)
     end
 
-    def compose(image_path : String)
-      overlay = StumpyPNG.read(image_path)
-      # Use the correct method for compositing images in StumpyPNG
-      @canvas.pixels.each_with_index do |pixel, index|
-        @canvas[index] = overlay[index]
+    def compose(overlay_path)
+      overlay = StumpyPNG.read(overlay_path)
+      width.times do |x|
+        height.times do |y|
+          @canvas[x, y] = overlay[x, y]
+        end
       end
     end
 
