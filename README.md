@@ -2,7 +2,7 @@
 
 ![Pixitar Avatar Example](./src/avatars.png)
 
-Pixitar is an avatar generation library written in Crystal. Generate random, male or female avatars.
+Pixitar is an avatar generation library written in Crystal. It allows for the generation of random avatars, as well as custom male or female avatars.
 
 Inspired by [8biticon](https://github.com/matveyco/8biticon) _(author of the original image assets)_
 
@@ -16,66 +16,105 @@ dependencies:
     github: dcalixto/pixitar
 ```
 
+Then run the following command to install the dependencies:
+
 ```crystal
 shards install
 ```
 
 ## Usage
 
+Import the library
+
 ```crystal
 require "pixitar"
 ```
 
-Create a new avatar generator
+Create an avatar generator
 
 ```crystal
 avatar = Pixitar::Avatar.new
 ```
 
-Generate random avatar (male or female)
+Generate a random avatar (male or female)
+
+To generate a random avatar:
 
 ```crystal
-avatar = Pixitar::Avatar.new.generate_avatar
+avatar.generate_avatar
 ```
 
+This will generate a random male or female avatar and save it with an auto-generated filename (e.g., avatar_xfal_2741.png).
+
 Generate male avatar with custom filename
+To generate a male avatar and save it to a specific filename:
 
 ```crystal
 avatar.generate_avatar(:male, "avatar.png") # Saves as avatar.png
 ```
 
-Generate male avatar
+Generate a female avatar with a custom filename
+To generate a female avatar and save it to a specific filename:
 
 ```crystal
-avatar.male_avatar # Saves to auto-generated filename
+avatar.generate_avatar(:female, "avatar_female.png") # Saves as avatar_female.png
+
 ```
 
-Generate female avatar
+Generate male or female avatars directly
+To generate male or female avatars directly:
 
 ```crystal
-avatar.female_avatar # Saves to auto-generated filename
+avatar.male_avatar # Generates and saves a male avatar to an auto-generated filename
+```
+
+```crystal
+avatar.female_avatar # Generates and saves a female avatar to an auto-generated filename
 ```
 
 Web Server Usage
+To serve avatars via a web server:
+
+Import the necessary libraries:
 
 ```crystal
 require "pixitar"
 require "pixitar/web"
+
+
+
+```
+
+Run the web server:
+
+```crystal
+
 
 Pixitar::Web.run
 
 ```
 
 Access avatars via HTTP:
+You can generate and download avatars by making HTTP requests:
 
 ```crystal
-`GET /avatar/male` - Generate male avatar
-`GET /avatar/female` - Generate female avatar
+GET /avatar/male - Generate a male avatar
+GET /avatar/female - Generate a female avatar
 
+```
+
+Example Web Server
+
+```crystal
+require "pixitar"
+require "pixitar/web"
+
+Pixitar::Web.run
 ```
 
 ## Development
 
+To work on Pixitar locally, follow these steps:
 Install dependencies
 
 ```crystal
@@ -83,7 +122,7 @@ shards install
 
 ```
 
-Run specs
+Run tests
 
 ```crystal
 crystal spec

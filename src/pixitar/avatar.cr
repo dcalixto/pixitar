@@ -68,9 +68,9 @@ module Pixitar
     def assets_for(face_part)
       abs_path = File.expand_path(@assets_path) # Ensure absolute path
       pattern = File.join(abs_path, gender.to_s, "#{face_part}[0-9]*.#{image_extension}")
-      puts "Debug - Looking for files at: #{pattern}" # Debug
+      # puts "Debug - Looking for files at: #{pattern}" # Debug
       files = Dir.glob(pattern)
-      puts "Debug - Found files: #{files.inspect}" # Debug
+      # puts "Debug - Found files: #{files.inspect}" # Debug
       files
     end
   end

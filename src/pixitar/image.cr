@@ -11,7 +11,7 @@ module Pixitar
     def compose(image_path)
       puts "Composing #{image_path}..."
       overlay = StumpyPNG.read(image_path)
-      puts "Overlay dimensions: #{overlay.width}x#{overlay.height}"
+      # puts "Overlay dimensions: #{overlay.width}x#{overlay.height}"
 
       width.times do |x|
         height.times do |y|
