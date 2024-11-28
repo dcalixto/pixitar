@@ -20,5 +20,13 @@ module Pixitar
     def save(path : String)
       StumpyPNG.write(@canvas, path)
     end
+
+    def width
+      @canvas.width
+    end
+
+    def height
+      @canvas.height
+    end
   end
 end
