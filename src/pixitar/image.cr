@@ -10,13 +10,21 @@ module Pixitar
 
     def compose(image_path)
       puts "Composing #{image_path}..."
-      canvas = StumpyPNG.read(image_path)
-      puts "Canvas dimensions: #{canvas.width}x#{canvas.height}"
+      overlay = StumpyPNG.read(image_path)
+      puts "Overlay dimensions: #{overlay.width}x#{overlay.height}"
+
       width.times do |x|
         height.times do |y|
-          @canvas[x, y] = canvas[x, y]
+          # Get the overlay pixel
+          overlay_pixel = overlay[x, y]
+
+          # Only copy non-transparent pixels (alpha > 0)
+          if overlay_pixel.alpha > 0
+            @canvas[x, y] = overlay_pixel
+          end
         end
       end
+
       puts "Finished composing #{image_path}."
     end
 
