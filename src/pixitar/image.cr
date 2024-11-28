@@ -7,6 +7,7 @@ module Pixitar
     def initialize(width = 400, height = 400)
       @canvas = StumpyCore::Canvas.new(width, height)
     end
+
     def compose(image_path)
       canvas = StumpyPNG.read(image_path)
       width.times do |x|
@@ -14,7 +15,6 @@ module Pixitar
           @canvas[x, y] = canvas[x, y]
         end
       end
-    end
     end
 
     def save(path : String)
