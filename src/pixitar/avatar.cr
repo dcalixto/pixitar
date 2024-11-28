@@ -9,7 +9,7 @@ module Pixitar
     getter image_extension : String
     getter gender : Symbol?
 
-    def initialize(@image = Image.new, @assets_path = "public/assets/pixitar", @image_extension = "png")
+    def initialize(@image = Image.new, @assets_path = File.join(Dir.current, "public/assets/pixitar"), @image_extension = "png")
     end
 
     def face_parts
