@@ -4,17 +4,17 @@ module Pixitar
   class Image
     @canvas : StumpyPNG::Canvas
 
-    def initialize
-      @canvas = StumpyPNG::Canvas.new(500, 500)
+    def initialize(width = 400, height = 400)
+      @canvas = StumpyCore::Canvas.new(width, height)
     end
-
-    def compose(overlay_path)
-      overlay = StumpyPNG.read(overlay_path)
+    def compose(image_path)
+      canvas = StumpyPNG.read(image_path)
       width.times do |x|
         height.times do |y|
-          @canvas[x, y] = overlay[x, y]
+          @canvas[x, y] = canvas[x, y]
         end
       end
+    end
     end
 
     def save(path : String)
