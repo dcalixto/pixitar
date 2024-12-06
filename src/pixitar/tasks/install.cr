@@ -1,7 +1,7 @@
 module Pixitar
   module Tasks
     def self.install
-      # Get shard's assets path
+      # Get shard's assets path (from the installed shard location)
       shard_assets = File.join(File.dirname(File.dirname(File.dirname(__DIR__))), "public/assets/pixitar")
 
       # Get user's application assets path
