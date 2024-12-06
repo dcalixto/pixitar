@@ -1,3 +1,5 @@
+require "file_utils"
+
 module Pixitar
   module Tasks
     def self.install
@@ -18,7 +20,7 @@ module Pixitar
 
       if File.exists?(shard_assets)
         puts "Copying assets..."
-        system("cp -r #{shard_assets}/* #{app_assets}/")
+        FileUtils.cp_r("#{shard_assets}/.", app_assets)
         puts "Assets copied: #{Dir.entries(app_assets).join(", ")}"
       else
         puts "ERROR: Source assets not found!"
