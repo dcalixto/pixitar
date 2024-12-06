@@ -1,0 +1,24 @@
+---
+version: 1.0
+shards:
+  stumpy_core:
+    git: https://github.com/stumpycr/stumpy_core.git
+    version: 1.9.1
+  stumpy_png:
+    git: https://github.com/stumpycr/stumpy_png.git
+    version: 5.0.1
+  spectator:
+    git: https://github.com/icy-arctic-fox/spectator.git
+    version: 0.12.1
+  radix:
+    git: https://github.com/luislavena/radix.git
+    version: 0.4.1
+  backtracer:
+    git: https://github.com/sija/backtracer.cr.git
+    version: 1.2.2
+  exception_page:
+    git: https://github.com/crystal-loot/exception_page.git
+    version: 0.4.1
+  kemal:
+    git: https://github.com/kemalcr/kemal.git
+    version: 1.6.0

@@ -4,6 +4,8 @@
 
 Pixitar is an avatar generator library written in Crystal. It allows for the generation of random avatars, as well as custom male or female avatars.
 
+[![Build Status](https://travis-ci.com/dcalixto/pixitar.svg?branch=main)](https://travis-ci.com/dcalixto/pixitar)
+
 Inspired by [8biticon](https://github.com/matveyco/8biticon) _(author of the original image assets)_
 
 ## Installation
@@ -41,23 +43,23 @@ Generate a random avatar (male or female)
 To generate a random avatar:
 
 ```crystal
-avatar.generate_avatar
+   avatar = Pixitar::Avatar.new.generate_avatar
 ```
 
-This will generate a random male or female avatar and save it with an auto-generated filename (e.g., avatar_xfal_2741.png).
+**_*This will generate a random male or female avatar and save it with an auto-generated filename (e.g., avatar_xfal_2741.png).*_**
 
 Generate male avatar with custom filename
 To generate a male avatar and save it to a specific filename:
 
 ```crystal
-avatar.generate_avatar(:male, "avatar.png") # Saves as avatar.png
+ avatar = Pixitar::Avatar.new.generate_avatar(:male, "avatar.png") # Saves as avatar.png
 ```
 
 Generate a female avatar with a custom filename
 To generate a female avatar and save it to a specific filename:
 
 ```crystal
-avatar.generate_avatar(:female, "avatar_female.png") # Saves as avatar_female.png
+ avatar = Pixitar::Avatar.new.generate_avatar(:female, "avatar_female.png") # Saves as avatar_female.png
 
 ```
 
@@ -131,15 +133,11 @@ crystal spec
 
 Contributing
 
-```crystal
 1. Fork it (https://github.com/dcalixto/pixitar/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-
-```
 
 ## Contributors
 
