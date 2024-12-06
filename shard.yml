@@ -15,5 +15,6 @@ development_dependencies:
     github: icy-arctic-fox/spectator
 
 scripts:
-  postinstall: crystal run lib/pixitar/src/pixitar/tasks/install.cr
+  postinstall: crystal run src/pixitar/tasks/install.cr
+
 license: MIT
