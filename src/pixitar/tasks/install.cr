@@ -1,23 +1,19 @@
 module Pixitar
   module Tasks
     def self.install
-      # Get absolute paths
-      current_dir = File.dirname(__FILE__)
-      shard_root = File.expand_path(File.join(current_dir, "..", "..", ".."))
+      # Source from local development path
+      source = File.expand_path("../pixitar/public/assets/pixitar")
+      target = File.join(Dir.current, "public/assets/pixitar")
 
-      shard_assets = File.join(shard_root, "public/assets/pixitar")
-      app_assets = File.join(Dir.current, "public/assets/pixitar")
+      puts "Installing Pixitar assets..."
+      puts "From: #{source}"
+      puts "To: #{target}"
 
-      puts "Debug info:"
-      puts "Current dir: #{current_dir}"
-      puts "Shard root: #{shard_root}"
-      puts "Source assets: #{shard_assets}"
-      puts "Target assets: #{app_assets}"
+      Dir.mkdir_p(target)
 
-      Dir.mkdir_p(app_assets)
-
-      if File.exists?(shard_assets)
-        system("cp -r #{shard_assets}/* #{app_assets}/")
+      if File.exists?(source)
+        system("cp -r #{source}/* #{target}/")
+        puts "✓ Assets installed successfully!"
       end
     end
   end
