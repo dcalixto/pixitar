@@ -9,7 +9,17 @@ module Pixitar
     getter image_extension : String
     getter gender : Symbol?
 
-    def initialize(@image = Image.new, @assets_path = File.join(Dir.current, "public/assets/pixitar"), @image_extension = "png")
+    def initialize(@image = Image.new, @assets_path = nil, @image_extension = "png")
+      @assets_path ||= find_assets_path
+    end
+
+    private def find_assets_path
+      paths = [
+        File.join(Dir.current, "public/assets/pixitar"),
+        File.join(File.dirname(File.dirname(__DIR__)), "public/assets/pixitar"),
+      ]
+
+      paths.find { |path| File.exists?(path) } || paths.first
     end
 
     def face_parts
