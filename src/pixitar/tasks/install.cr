@@ -1,23 +1,21 @@
 module Pixitar
   module Tasks
     def self.install
-      # Get absolute paths
-      current_dir = File.dirname(__FILE__)
-      shard_root = File.expand_path(File.join(current_dir, "..", "..", ".."))
+      puts "Current directory: #{Dir.current}"
+      puts "File location: #{__FILE__}"
 
-      shard_assets = File.join(shard_root, "public/assets/pixitar")
-      app_assets = File.join(Dir.current, "public/assets/pixitar")
+      source = File.join(File.dirname(File.dirname(File.dirname(__DIR__))), "public/assets/pixitar")
+      target = File.join(Dir.current, "public/assets/pixitar")
 
-      puts "Debug info:"
-      puts "Current dir: #{current_dir}"
-      puts "Shard root: #{shard_root}"
-      puts "Source assets: #{shard_assets}"
-      puts "Target assets: #{app_assets}"
+      puts "Source path: #{source}"
+      puts "Source exists? #{File.exists?(source)}"
+      puts "Target path: #{target}"
 
-      Dir.mkdir_p(app_assets)
+      Dir.mkdir_p(target)
 
-      if File.exists?(shard_assets)
-        system("cp -r #{shard_assets}/* #{app_assets}/")
+      if File.exists?(source)
+        system("cp -r #{source}/* #{target}/")
+        puts "Files copied: #{Dir.entries(target).join(", ")}"
       end
     end
   end
