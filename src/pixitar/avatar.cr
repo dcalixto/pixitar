@@ -14,6 +14,8 @@ module Pixitar
       @assets_path = File.join(Dir.current, "public/assets/pixitar"),
       @image_extension = "png"
     )
+      puts "Assets path: #{@assets_path}"
+      puts "Assets exist: #{File.exists?(@assets_path)}"
     end
 
     private def find_assets_path
