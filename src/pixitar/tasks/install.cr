@@ -1,27 +1,30 @@
 module Pixitar
   module Tasks
     def self.install
-      # Debug current location
-      puts "Current directory: #{Dir.current}"
+      begin
+        # Debug current location
+        puts "Current directory: #{Dir.current}"
 
-      # Get paths with expanded paths for debugging
-      shard_assets = File.expand_path(File.join(File.dirname(File.dirname(File.dirname(__DIR__))), "public/assets/pixitar"))
-      app_assets = File.expand_path(File.join(Dir.current, "public/assets/pixitar"))
+        # Define paths
+        shard_assets = File.join(__DIR__, "..", "..", "..", "public/assets/pixitar")
+        app_assets = File.join(Dir.current, "public/assets/pixitar")
 
-      puts "Installing Pixitar assets..."
-      puts "Source path: #{shard_assets}"
-      puts "Source exists? #{File.exists?(shard_assets)}"
-      puts "Target path: #{app_assets}"
+        puts "Installing Pixitar assets..."
+        puts "From: #{shard_assets}"
+        puts "To: #{app_assets}"
 
-      # Create directories
-      Dir.mkdir_p(app_assets)
+        # Create target directory
+        Dir.mkdir_p(app_assets)
 
-      if File.exists?(shard_assets)
-        puts "Copying assets..."
-        system("cp -r #{shard_assets}/* #{app_assets}/")
-        puts "Assets copied: #{Dir.entries(app_assets).join(", ")}"
-      else
-        puts "ERROR: Source assets not found!"
+        # Copy assets
+        if File.exists?(shard_assets)
+          system("cp -r #{shard_assets}/* #{app_assets}/")
+          puts "✓ Assets installed successfully!"
+        else
+          puts "✗ Error: Source assets not found at #{shard_assets}"
+        end
+      rescue ex
+        puts "✗ Installation failed: #{ex.message}"
       end
     end
   end
