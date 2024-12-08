@@ -3,7 +3,8 @@
 ![Pixitar Avatar Example](./src/avatars.png)
 
 Pixitar is an avatar generator library written in Crystal. It allows for the generation of random avatars, as well as custom male or female avatars.
-[![Crystal Test](https://github.com/dcalixto/pixitar/actions/workflows/crystal-test.yml/badge.svg?branch=master)](https://github.com/dcalixto/pixitar/actions/workflows/crystal-test.yml)
+
+![Crystal Test](https://github.com/dcalixto/pixitar/actions/workflows/crystal-test.yml/badge.svg?branch=master)
 
 Inspired by [8biticon](https://github.com/matveyco/8biticon) _(author of the original image assets)_
 
