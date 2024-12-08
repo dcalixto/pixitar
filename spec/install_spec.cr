@@ -22,9 +22,9 @@ Spectator.describe "Install" do
   end
 
   it "should handle permissions" do
-    restricted_path = "/root/kemal_test"
-    expect_raises(Exception) do
-      Dir.mkdir_p(restricted_path)
+    restricted_path = "/root/kemal_test_#{Random.new.rand(10000)}"
+    expect_raises(Exception, /Permission denied|Access is denied/) do
+      FileUtils.mkdir_p(restricted_path)
     end
   end
 end
